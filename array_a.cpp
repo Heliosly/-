@@ -1,5 +1,5 @@
 #include <iostream>
-#include <memory> // ÒıÈëÖÇÄÜÖ¸Õë¿â
+#include <memory> // å¼•å…¥æ™ºèƒ½æŒ‡é’ˆåº“
 #include <vector>
 #include <conio.h>
 #include <windows.h>
@@ -196,7 +196,7 @@ void fruit_initial() {
             continue;
         else break;
     }
-    // Ê¹ÓÃÖÇÄÜÖ¸ÕëµÄmake_shared´´½¨¶ÔÏó
+    // ä½¿ç”¨æ™ºèƒ½æŒ‡é’ˆçš„make_sharedåˆ›å»ºå¯¹è±¡
     if (m == 0)
         fd.push_back(make_shared<FruitTwice>(x, y));
     else if (m == 1)
@@ -281,8 +281,9 @@ void move() {
     if (!fd.empty()) {
         for (auto i = fd.begin(); i < fd.end(); i++) {
             if (sh.eat((*i)->x, (*i)->y)) { 
+                 grade+=(*i)->grade;
                 fd.erase(i);
-                grade+=(*i)->grade;
+               
                 break;
             }
         }
