@@ -5,11 +5,11 @@
 #include<vector>
 using namespace std;
 struct student {
-    char username[15]; 
-    char password[15]; 
-    char name[15]; 
-    char numb[8]; //½èÔÄÖ¤ºÅ
-    char gender[6] ;
+    char username[15];
+    char password[15];
+    char name[15];
+    char numb[8]; //å€Ÿé˜…è¯å·
+    char gender[6];
     int age;
 };
 struct admin {
@@ -17,26 +17,26 @@ struct admin {
     char password[15];
 };
 struct book {
-    char name[15]; 
-     
-    char ibsn[18]; 
-    char author[14]; // ×÷Õß
-    char publish[15]; // ³ö°æÉç
-    double price; 
+    char name[15];
+
+    char ibsn[18];
+    char author[14]; // ä½œè€…
+    char publish[15]; // å‡ºç‰ˆç¤¾
+    double price;
     bool status = 0;
 };
 struct record {
-    char user[15]; 
-    char book[15]; 
-    int time1; 
-    int time2; 
-   
+    char user[15];
+    char book[15];
+    int time1;
+    int time2;
+
 };
 vector<admin>adminlist;
 vector<student>stlist;
 vector<book>booklist;
 vector<record>relist;
-void whh() { cout << "\nÊäÈë»»ĞĞ·û¼ÌĞø" << endl;   getchar(); while (   char cc = getchar()) { if (cc == '\n') break; };}
+void whh() { cout << "\nè¾“å…¥æ¢è¡Œç¬¦ç»§ç»­" << endl;   getchar(); while (char cc = getchar()) { if (cc == '\n') break; }; }
 void readadmin();
 void writeadmin();
 void readst();
@@ -79,9 +79,9 @@ int main() {
     readbook();
     readst();
     readrecord();
-    while(!islogin)
+    while (!islogin)
     {
-        cout << "*---------------------------------------------*\n*------------1£ºµÇÂ½\n*------------2£º×¢²á\n*---------------------------------------------*\nÇëÊäÈëÑ¡Ôñ£º";
+        cout << "*---------------------------------------------*\n*------------1ï¼šç™»é™†\n*------------2ï¼šæ³¨å†Œ\n*---------------------------------------------*\nè¯·è¾“å…¥é€‰æ‹©ï¼š";
         int a = 0;
         cin >> a;
         if (a == 1) {
@@ -91,51 +91,52 @@ int main() {
             Register();
         }
     }
-    while(1)
-    if (isadmin) {
-        adminmenu();
-        int n;
-        cin >> n;
-        switch (n) {
-        case 1:adduser(); break;
-        case 2:deleteuser(); break;
-        case 3:modifyuser();  break;
-        case 4:finduser(); break;
-        case 5:sortuser(); break;
-     case 6:addbook(); break;
-        case 7:deletebook(); break;
-      case 8:modifybook(); break;
+    while (1)
+        if (isadmin) {
+            adminmenu();
+            int n;
+            cin >> n;
+            switch (n) {
+            case 1:adduser(); break;
+            case 2:deleteuser(); break;
+            case 3:modifyuser();  break;
+            case 4:finduser(); break;
+            case 5:sortuser(); break;
+            case 6:addbook(); break;
+            case 7:deletebook(); break;
+            case 8:modifybook(); break;
             case 9:findbook(); break;
-        case 10:sortbook(); break;
-        case 11:addrecord(); break;
-        case 12:deleterecord(); break;
-        case 13:modifyrecord(); break;
-             case 14:findrecord(); break;
-        case 15:sortrecord(); break;
+            case 10:sortbook(); break;
+            case 11:addrecord(); break;
+            case 12:deleterecord(); break;
+            case 13:modifyrecord(); break;
+            case 14:findrecord(); break;
+            case 15:sortrecord(); break;
+            case 0: return; break;
+            }
         }
-    }
-    else {
-        stmenu();
-        int n;
-        cin >> n;
-        switch (n) {
-        case 1:findbook();
-            break;
-        case 2:sortbook();
-            break;
-        case 3:addrecord();
-            break;
-        case 4:modifyrecord();
-            break;
-        case 5:findrecord();
-            break;
-        case 6:
-            sortrecord();
-            break;
+        else {
+            stmenu();
+            int n;
+            cin >> n;
+            switch (n) {
+            case 1:findbook();
+                break;
+            case 2:sortbook();
+                break;
+            case 3:addrecord();
+                break;
+            case 4:modifyrecord();
+                break;
+            case 5:findrecord();
+                break;
+            case 6:
+                sortrecord();
+                break;
+            }
         }
-    }
     cout << "\ngood";
-	return 0;
+    return 0;
 }
 void readadmin() {
     FILE* fp = fopen("Admin.txt", "r");
@@ -143,7 +144,7 @@ void readadmin() {
         return;
     }
     admin a;
-    while (fscanf(fp, "%s%s", a.username,a.password)!=EOF) {
+    while (fscanf(fp, "%s%s", a.username, a.password) != EOF) {
         adminlist.push_back(a);
     }
     fclose(fp);
@@ -162,7 +163,7 @@ void readst() {
         return;
     }
     student a;
-    while (fscanf(fp, "%s%s%s%s%s%d", a.username, a.password,a.name,a.gender,&a.numb ,& a.age) != EOF) {
+    while (fscanf(fp, "%s%s%s%s%s%d", a.username, a.password, a.name, a.gender, &a.numb, &a.age) != EOF) {
         stlist.push_back(a);
     }
     fclose(fp);
@@ -173,7 +174,7 @@ void readbook() {
         return;
     }
     book a;
-    while (fscanf(fp, "%s%s%s%s%lf%d", a.name,  a.ibsn, a.author, a.publish, &a.price,&a.status) != EOF) {
+    while (fscanf(fp, "%s%s%s%s%lf%d", a.name, a.ibsn, a.author, a.publish, &a.price, &a.status) != EOF) {
         booklist.push_back(a);
     }
     fclose(fp);
@@ -181,7 +182,7 @@ void readbook() {
 void writebook() {
     FILE* fp = fopen("Book.txt", "w+");
     for (auto i : booklist) {
-        fprintf(fp, "%s %s %s %s %lf %d\n", i.name,  i.ibsn, i.author, i.publish, i.price,i.status);
+        fprintf(fp, "%s %s %s %s %lf %d\n", i.name, i.ibsn, i.author, i.publish, i.price, i.status);
 
     }
     fclose(fp);
@@ -189,8 +190,8 @@ void writebook() {
 void writest() {
     FILE* fp = fopen("St.txt", "w+");
 
-for (auto i : stlist) {
-        fprintf(fp, "%s %s %s %s %s %d\n", i.username, i.password,i.name,i.gender, i.numb,i.age);
+    for (auto i : stlist) {
+        fprintf(fp, "%s %s %s %s %s %d\n", i.username, i.password, i.name, i.gender, i.numb, i.age);
 
     }
     fclose(fp);
@@ -209,21 +210,21 @@ void readrecord() {
 void writerecord() {
     FILE* fp = fopen("Record.txt", "w+");
 
-    for (auto i : relist) { 
+    for (auto i : relist) {
         fprintf(fp, "%s %s %d %d  \n", i.user, i.book, i.time1, i.time2);
 
     }
     fclose(fp);
 }
 void Login() {
-    
+
     while (!islogin)
     {
         char username[15];
         char password[15];
-        cout << "ÇëÊäÈëÕËºÅ£º";
+        cout << "è¯·è¾“å…¥è´¦å·ï¼š";
         cin >> username;
-        cout << "ÇëÊäÈëÃÜÂë£º";
+        cout << "è¯·è¾“å…¥å¯†ç ï¼š";
         cin >> password;
         for (auto i : adminlist) {
             if ((!strcmp(i.password, password)) && (!strcmp(i.username, username))) {
@@ -231,21 +232,20 @@ void Login() {
                 isadmin = 1;
                 break;
             }
-        if (!islogin) {
-            for (auto i : stlist) {
-                if ((!strcmp(i.password, password)) && (!strcmp(i.username, username))) {
-                    islogin = 1;
-                    break;
+            if (!islogin) {
+                for (auto i : stlist) {
+                    if ((!strcmp(i.password, password)) && (!strcmp(i.username, username))) {
+                        islogin = 1;
+                        break;
+                    }
                 }
-            }
-           
-            }
-       }
 
-        if(!islogin) {
-            cout << "µÇÂ¼Ê§°Ü"<<endl;
-            cout << "ÊäÈë 0 ·µ»Ø" << endl;
-            cout << "ÊäÈë 1 ¼ÌĞø" << endl;
+            }
+        }
+        if (!islogin) {
+            cout << "ç™»å½•å¤±è´¥" << endl;
+            cout << "è¾“å…¥ 0 è¿”å›" << endl;
+            cout << "è¾“å…¥ 1 ç»§ç»­" << endl;
             int b;
             cin >> b;
             if (!b) {
@@ -258,22 +258,22 @@ void Login() {
 }
 void Register() {
     bool flag = 0;
-    while (flag==0) {
+    while (flag == 0) {
         flag = 1;
-        cout << "*---------------------------------------------*\n*------------0:·µ»Ø \n";
-        cout << "*------------1:×¢²á¹ÜÀíÔ± \n";
-        cout << "*------------2:×¢²áÓÃ»§ \n";
-        cout << "*---------------------------------------------*\nÇëÊäÈëÑ¡Ôñ£º";
+        cout << "*---------------------------------------------*\n*------------0:è¿”å› \n";
+        cout << "*------------1:æ³¨å†Œç®¡ç†å‘˜ \n";
+        cout << "*------------2:æ³¨å†Œç”¨æˆ· \n";
+        cout << "*---------------------------------------------*\nè¯·è¾“å…¥é€‰æ‹©ï¼š";
         int slect = 0;
         cin >> slect;
 
         if (slect == 1) {
             admin a;
-            cout << "ÇëÊäÈëÕËºÅ£º";
+            cout << "è¯·è¾“å…¥è´¦å·ï¼š";
             cin >> a.username;
-          
+
             for (auto i : adminlist) {
-                if (!strcmp(a.username,i.username))
+                if (!strcmp(a.username, i.username))
                 {
                     flag = 0;
                     break;
@@ -281,10 +281,10 @@ void Register() {
             }
             if (flag == 0)
             {
-                cout << "×¢²áÊ§°Ü,ÓÃ»§ÃûÖØ¸´" << endl;
+                cout << "æ³¨å†Œå¤±è´¥,ç”¨æˆ·åé‡å¤" << endl;
                 continue;
             }
-            cout << "ÇëÊäÈëÃÜÂë£º";
+            cout << "è¯·è¾“å…¥å¯†ç ï¼š";
             cin >> a.password;
             if (flag)
             {
@@ -292,13 +292,13 @@ void Register() {
                 adminlist.push_back(a);
                 writeadmin();
             }
-           
+
         }
         else if (slect == 2) {
             student a;
-            cout << "ÇëÊäÈëÕËºÅ£º";
+            cout << "è¯·è¾“å…¥è´¦å·ï¼š";
             cin >> a.username;
-           
+
             for (auto i : stlist) {
                 if (!strcmp(a.username, i.username))
                 {
@@ -308,90 +308,89 @@ void Register() {
             }
             if (flag == 0)
             {
-                cout << "×¢²áÊ§°Ü,ÓÃ»§ÃûÖØ¸´" << endl;
+                cout << "æ³¨å†Œå¤±è´¥,ç”¨æˆ·åé‡å¤" << endl;
                 continue;
             }
-            cout << "ÇëÊäÈëÃÜÂë£º";
+            cout << "è¯·è¾“å…¥å¯†ç ï¼š";
             cin >> a.password;
-            cout << "ÇëÊäÈëĞÕÃû £º";
+            cout << "è¯·è¾“å…¥å§“å ï¼š";
 
             cin >> a.name;
-            cout << "ÇëÊäÈëĞÔ±ğ £º";
+            cout << "è¯·è¾“å…¥æ€§åˆ« ï¼š";
 
             cin >> a.gender;
-            cout << "ÇëÊäÈëÄêÁä £º";
+            cout << "è¯·è¾“å…¥å¹´é¾„ ï¼š";
 
             cin >> a.age;
-            cout << "ÇëÊäÈë½èÔÄÖ¤ºÅ £º";
+            cout << "è¯·è¾“å…¥å€Ÿé˜…è¯å· ï¼š";
             cin >> a.numb;
             if (flag)
             {
                 stlist.push_back(a);
                 writest();
             }
-            
+
         }
         else if (slect == 0)  return;
     }
     if (flag)
-        islogin = 1;    
+        islogin = 1;
     return;
 }
 void adminmenu() {
-	
-    	cout << "*------------------Ö÷²Ëµ¥---------------------*\n";
-	cout << "*-------------1 :Ìí¼ÓÓÃ»§\n";
-	cout << "*-------------2 :É¾³ıÓÃ»§\n";
-	cout << "*-------------3 :ĞŞ¸ÄÓÃ»§\n";
-	cout << "*-------------4 :²éÕÒÓÃ»§\n";
-	cout << "*-------------5 :ÅÅĞòÓÃ»§\n";
-	cout << "*-------------6 :Ìí¼ÓÍ¼Êé\n";
-	cout << "*-------------7 :É¾³ıÍ¼Êé\n";
-	cout << "*-------------8 :ĞŞ¸ÄÍ¼Êé\n";
-	cout << "*-------------9 :²éÕÒÍ¼Êé\n";
-	cout << "*-------------10 :ÅÅĞòÍ¼Êé\n";
-	cout << "*-------------11 :Ìí¼Ó½èÔÄ¼ÇÂ¼\n";
-	cout << "*-------------12 :É¾³ı½èÔÄ¼ÇÂ¼\n";
-	cout << "*-------------13 :ĞŞ¸Ä½èÔÄ¼ÇÂ¼\n";
-	cout << "*-------------14 :²éÕÒ½èÔÄ¼ÇÂ¼\n";
-	cout << "*-------------15 :ÅÅĞò½èÔÄ¼ÇÂ¼\n";
-	cout << "*-------------0:ÍË³ö\n";
-	cout << "*------------(-1):µÇ³ö\n";
-	cout << "*------------(-2):ÎÒµÄ\n";
-	cout << "*---------------------------------------------*\n";
-	cout << "ÇëÊäÈëÑ¡Ôñ£º";
+
+    cout << "*------------------ä¸»èœå•---------------------*\n";
+    cout << "*-------------1 :æ·»åŠ ç”¨æˆ·\n";
+    cout << "*-------------2 :åˆ é™¤ç”¨æˆ·\n";
+    cout << "*-------------3 :ä¿®æ”¹ç”¨æˆ·\n";
+    cout << "*-------------4 :æŸ¥æ‰¾ç”¨æˆ·\n";
+    cout << "*-------------5 :æ’åºç”¨æˆ·\n";
+    cout << "*-------------6 :æ·»åŠ å›¾ä¹¦\n";
+    cout << "*-------------7 :åˆ é™¤å›¾ä¹¦\n";
+    cout << "*-------------8 :ä¿®æ”¹å›¾ä¹¦\n";
+    cout << "*-------------9 :æŸ¥æ‰¾å›¾ä¹¦\n";
+    cout << "*-------------10 :æ’åºå›¾ä¹¦\n";
+    cout << "*-------------11 :æ·»åŠ å€Ÿé˜…è®°å½•\n";
+    cout << "*-------------12 :åˆ é™¤å€Ÿé˜…è®°å½•\n";
+    cout << "*-------------13 :ä¿®æ”¹å€Ÿé˜…è®°å½•\n";
+    cout << "*-------------14 :æŸ¥æ‰¾å€Ÿé˜…è®°å½•\n";
+    cout << "*-------------15 :æ’åºå€Ÿé˜…è®°å½•\n";
+    cout << "*-------------0:é€€å‡º\n";
+
+    cout << "*---------------------------------------------*\n";
+    cout << "è¯·è¾“å…¥é€‰æ‹©ï¼š";
 }
 void stmenu() {
-	
-	cout << "*------------------Ö÷²Ëµ¥---------------------*\n";
-	cout << "*-------------1 :²éÕÒÍ¼Êé\n";
-	cout << "*-------------2 :ÅÅĞòÍ¼Êé\n";
-	cout << "*-------------3 :Ìí¼Ó½èÔÄ¼ÇÂ¼\n";
-	cout << "*-------------4 :ĞŞ¸Ä½èÔÄ¼ÇÂ¼\n";
-	cout << "*-------------5 :²éÕÒ½èÔÄ¼ÇÂ¼\n";
-	cout << "*-------------6 :ÅÅĞò½èÔÄ¼ÇÂ¼\n";
-	cout << "*-------------0:ÍË³ö\n";
-	cout << "*------------(-1):µÇ³ö\n";
-	cout << "*------------(-2):ÎÒµÄ\n";
-	cout << "*---------------------------------------------*\n";
-	cout << "ÇëÊäÈëÑ¡Ôñ£º";
+
+    cout << "*------------------ä¸»èœå•---------------------*\n";
+    cout << "*-------------1 :æŸ¥æ‰¾å›¾ä¹¦\n";
+    cout << "*-------------2 :æ’åºå›¾ä¹¦\n";
+    cout << "*-------------3 :æ·»åŠ å€Ÿé˜…è®°å½•\n";
+    cout << "*-------------4 :ä¿®æ”¹å€Ÿé˜…è®°å½•\n";
+    cout << "*-------------5 :æŸ¥æ‰¾å€Ÿé˜…è®°å½•\n";
+    cout << "*-------------6 :æ’åºå€Ÿé˜…è®°å½•\n";
+    cout << "*-------------0:é€€å‡º\n";
+    cout << "*------------(-1):ç™»å‡º\n";
+    cout << "*------------(-2):æˆ‘çš„\n";
+    cout << "*---------------------------------------------*\n";
+    cout << "è¯·è¾“å…¥é€‰æ‹©ï¼š";
 }
 void adduser() {
     bool flag = 0;
     while (flag == 0) {
         flag = 1;
-        cout << "*---------------------------------------------*\n*------------0:·µ»Ø \n";
-        cout << "*------------1:Ìí¼Ó¹ÜÀíÔ± \n";
-        cout << "*------------2:Ìí¼ÓÓÃ»§ \n";
-        cout << "*---------------------------------------------*\nÇëÊäÈëÑ¡Ôñ£º";
+        cout << "*---------------------------------------------*\n*------------0:è¿”å› \n";
+        cout << "*------------1:æ·»åŠ ç®¡ç†å‘˜ \n";
+        cout << "*------------2:æ·»åŠ ç”¨æˆ· \n";
+        cout << "*---------------------------------------------*\nè¯·è¾“å…¥é€‰æ‹©ï¼š";
         int slect = 0;
         cin >> slect;
 
         if (slect == 1) {
             admin a;
-            cout << "ÇëÊäÈëÕËºÅ£º";
+            cout << "è¯·è¾“å…¥è´¦å·ï¼š";
             cin >> a.username;
-            
+
             for (auto i : adminlist) {
                 if (!strcmp(a.username, i.username))
                 {
@@ -401,10 +400,10 @@ void adduser() {
             }
             if (flag == 0)
             {
-                cout << "Ìí¼ÓÊ§°Ü,ÓÃ»§ÃûÖØ¸´" << endl;
+                cout << "æ·»åŠ å¤±è´¥,ç”¨æˆ·åé‡å¤" << endl;
                 continue;
             }
-            cout << "ÇëÊäÈëÃÜÂë£º";
+            cout << "è¯·è¾“å…¥å¯†ç ï¼š";
             cin >> a.password;
             if (flag)
             {
@@ -412,11 +411,11 @@ void adduser() {
                 adminlist.push_back(a);
                 writeadmin();
             }
-            
+
         }
         else if (slect == 2) {
             student a;
-            cout << "ÇëÊäÈëÕËºÅ£º";
+            cout << "è¯·è¾“å…¥è´¦å·ï¼š";
             cin >> a.username;
             for (auto i : stlist) {
                 if (!strcmp(a.username, i.username))
@@ -427,63 +426,63 @@ void adduser() {
             }
             if (flag == 0)
             {
-                cout << "Ìí¼ÓÊ§°Ü,ÓÃ»§ÃûÖØ¸´" << endl;
+                cout << "æ·»åŠ å¤±è´¥,ç”¨æˆ·åé‡å¤" << endl;
                 continue;
             }
-            cout << "ÇëÊäÈëÃÜÂë£º";
+            cout << "è¯·è¾“å…¥å¯†ç ï¼š";
             cin >> a.password;
-            cout << "ÇëÊäÈëĞÕÃû £º";
+            cout << "è¯·è¾“å…¥å§“å ï¼š";
 
             cin >> a.name;
-            cout << "ÇëÊäÈëĞÔ±ğ £º";
+            cout << "è¯·è¾“å…¥æ€§åˆ« ï¼š";
 
             cin >> a.gender;
-            cout << "ÇëÊäÈëÄêÁä £º";
+            cout << "è¯·è¾“å…¥å¹´é¾„ ï¼š";
 
             cin >> a.age;
-            cout << "ÇëÊäÈë½èÔÄÖ¤ºÅ £º";
+            cout << "è¯·è¾“å…¥å€Ÿé˜…è¯å· ï¼š";
             cin >> a.numb;
-            
+
             if (flag)
             {
                 stlist.push_back(a);
                 writest();
             }
-            }
+        }
         else if (slect == 0)  return;
     }
-    
+
     return;
 }
 void showuser() {
-    int count=0;
-    printf("\n%-5s%-15s%-15s%-15s%-8s%-10s%-18s\n\n", "ĞòºÅ", "ÓÃ»§Ãû", "ÃÜÂë", "ĞÕÃû", "ĞÔ±ğ", "ÄêÁä", "µØÖ·", "½èÔÄÖ¤ºÅ");
-    for (int i = 0; i < adminlist.size();i++)
+    int count = 0;
+    printf("\n%-5s%-15s%-15s%-15s%-8s%-10s%-18s\n\n", "åºå·", "ç”¨æˆ·å", "å¯†ç ", "å§“å", "æ€§åˆ«", "å¹´é¾„", "åœ°å€", "å€Ÿé˜…è¯å·");
+    for (int i = 0; i < adminlist.size(); i++)
     {
-        printf("%-5d%-15s%-15s%-15s%-8s%-10s%-18s \n\n", i + 1, adminlist[i].username, adminlist[i].password, "¹ÜÀíÔ±"
-            , "ÎŞ"
-            , "ÎŞ"
-            , "ÎŞ"
+        printf("%-5d%-15s%-15s%-15s%-8s%-10s%-18s \n\n", i + 1, adminlist[i].username, adminlist[i].password, "ç®¡ç†å‘˜"
+            , "æ— "
+            , "æ— "
+            , "æ— "
         );
         count++;
     }
     for (int i = 0; i < stlist.size(); i++)
     {
-        printf("%-5d%-15s%-15s%-15s%-8s%-10d%-18s \n\n", i + 1+adminlist.size(), stlist[i].username, stlist[i].password, stlist[i].name
+        printf("%-5d%-15s%-15s%-15s%-8s%-10d%-18s \n\n", i + 1 + adminlist.size(), stlist[i].username, stlist[i].password, stlist[i].name
             , stlist[i].gender
             , stlist[i].age
             , stlist[i].numb
         );
         count++;
     }
-    cout << "      ¹²" << count << "Ìõ½á¹û\n";
-   
+    cout << "      å…±" << count << "æ¡ç»“æœ\n";
+
     return;
 
 }
 void showst() {
     int count = 0;
-    printf("\n%-5s%-15s%-15s%-15s%-8s%-10s%-18s\n\n", "ĞòºÅ", "ÓÃ»§Ãû", "ÃÜÂë", "ĞÕÃû", "ĞÔ±ğ", "ÄêÁä", "µØÖ·", "½èÔÄÖ¤ºÅ");
+    printf("\n%-5s%-15s%-15s%-15s%-8s%-10s%-18s\n\n", "åºå·", "ç”¨æˆ·å", "å¯†ç ", "å§“å", "æ€§åˆ«", "å¹´é¾„", "åœ°å€", "å€Ÿé˜…è¯å·");
 
     for (int i = 0; i < stlist.size(); i++)
     {
@@ -494,19 +493,19 @@ void showst() {
         );
         count++;
     }
-    cout << "      ¹²" << count << "Ìõ½á¹û\n";
+    cout << "      å…±" << count << "æ¡ç»“æœ\n";
     return;
 }
 void deleteuser() {
-    while(1)
+    while (1)
     {
         showuser();
         int n;
 
-        cout << "ÊäÈëĞòºÅ,É¾³ıÄãÏëÉ¾³ıµÄÕËºÅ»òÕßÊäÈë0·µ»Ø" << endl;
+        cout << "è¾“å…¥åºå·,åˆ é™¤ä½ æƒ³åˆ é™¤çš„è´¦å·æˆ–è€…è¾“å…¥0è¿”å›" << endl;
         cin >> n;
         if (!n)
-            return ;
+            return;
         n--;
         if (n >= 0 && n < stlist.size() + adminlist.size()) {
             if (n >= adminlist.size())
@@ -517,15 +516,15 @@ void deleteuser() {
             else {
                 adminlist.erase(adminlist.begin() + n);
             }
-            cout << "É¾³ı³É¹¦" << endl;
+            cout << "åˆ é™¤æˆåŠŸ" << endl;
             writeadmin();
             writest();
         }
         else {
-            cout << "ÄúÊäÈëµÄĞòºÅ²»ÔÚ´ËÁĞ" << endl;
+            cout << "æ‚¨è¾“å…¥çš„åºå·ä¸åœ¨æ­¤åˆ—" << endl;
         }
 
-       
+
     }
     return;
 }
@@ -533,34 +532,34 @@ void finduser() {
     int select = -1;
     while (1) {
         int count = 0;
-        
+
         char conCharArr[40];
-       
-        
+
+
         if (select == 0)
         {
             writest();
             return;
         }
-        if (select > -1&&select<=4) {
+        if (select > -1 && select <= 4) {
             if (select == 1 || select == 2 || select == 3 || select == 4) {
-                cout << "ÇëÊäÈëÉ¸Ñ¡Ìõ¼ş£º";
+                cout << "è¯·è¾“å…¥ç­›é€‰æ¡ä»¶ï¼š";
                 cin >> conCharArr;
             }
         }
-        if(select==5) 
+        if (select == 5)
         {
             select = -1;
             stlist.clear();
             readst();
         }
-        printf("\n%-5s%-15s%-15s%-15s%-8s%-10s%-18s\n\n", "ĞòºÅ", "ÓÃ»§Ãû", "ÃÜÂë", "ĞÕÃû", "ĞÔ±ğ", "ÄêÁä", "µØÖ·", "½èÔÄÖ¤ºÅ");
+        printf("\n%-5s%-15s%-15s%-15s%-8s%-10s%-18s\n\n", "åºå·", "ç”¨æˆ·å", "å¯†ç ", "å§“å", "æ€§åˆ«", "å¹´é¾„", "åœ°å€", "å€Ÿé˜…è¯å·");
         for (int i = 0; i < stlist.size(); i++)
             if (select == -1
-                || select == 1 && strstr(stlist[i].username, conCharArr) //¸ù¾İÓÃ»§Ãû,Ä£ºı²éÑ¯
-                || select == 2 && strstr(stlist[i].name, conCharArr) //¸ù¾İĞÕÃû,Ä£ºı²éÑ¯
-                || select == 3 && strstr(stlist[i].gender, conCharArr) //¸ù¾İĞÔ±ğ,Ä£ºı²éÑ¯
-                || select == 4 && strstr(stlist[i].numb, conCharArr) //¸ù¾İ½èÔÄÖ¤ºÅ,Ä£ºı²éÑ¯
+                || select == 1 && strstr(stlist[i].username, conCharArr) //æ ¹æ®ç”¨æˆ·å,æ¨¡ç³ŠæŸ¥è¯¢
+                || select == 2 && strstr(stlist[i].name, conCharArr) //æ ¹æ®å§“å,æ¨¡ç³ŠæŸ¥è¯¢
+                || select == 3 && strstr(stlist[i].gender, conCharArr) //æ ¹æ®æ€§åˆ«,æ¨¡ç³ŠæŸ¥è¯¢
+                || select == 4 && strstr(stlist[i].numb, conCharArr) //æ ¹æ®å€Ÿé˜…è¯å·,æ¨¡ç³ŠæŸ¥è¯¢
                 ) {
 
                 printf("%-5d%-15s%-15s%-15s%-8s%-10d%-18s \n\n", (++count), stlist[i].username, stlist[i].password, stlist[i].name
@@ -571,22 +570,22 @@ void finduser() {
 
             }
             else stlist.erase(stlist.begin() + (i--));
-            
-       
-       
-        cout << "      ¹²" << count << "Ìõ½á¹û\n";
-       
 
 
 
-        cout << "¡¾É¸Ñ¡Æ÷£ºÄã¿ÉÒÔÔÚÒÔÉÏ½á¹ûµÄ»ù´¡ÉÏ£¬½øĞĞÒÔÏÂÌõ¼şÉ¸Ñ¡¡¿\n";
-        cout << "0£ºÍË³ö\n";
-        cout << "1£º°´ ÓÃ»§Ãû É¸Ñ¡\n";
-        cout << "2£º°´ ĞÕÃû É¸Ñ¡\n";
-        cout << "3£º°´ ĞÔ±ğ É¸Ñ¡\n";
-        cout << "4£º°´ ½èÔÄÖ¤ºÅ É¸Ñ¡\n";
-        cout << "5£ºË¢ĞÂ\n";
-        cout << "ÇëÊäÈëÑ¡Ôñ£º";
+        cout << "      å…±" << count << "æ¡ç»“æœ\n";
+
+
+
+
+        cout << "ã€ç­›é€‰å™¨ï¼šä½ å¯ä»¥åœ¨ä»¥ä¸Šç»“æœçš„åŸºç¡€ä¸Šï¼Œè¿›è¡Œä»¥ä¸‹æ¡ä»¶ç­›é€‰ã€‘\n";
+        cout << "0ï¼šé€€å‡º\n";
+        cout << "1ï¼šæŒ‰ ç”¨æˆ·å ç­›é€‰\n";
+        cout << "2ï¼šæŒ‰ å§“å ç­›é€‰\n";
+        cout << "3ï¼šæŒ‰ æ€§åˆ« ç­›é€‰\n";
+        cout << "4ï¼šæŒ‰ å€Ÿé˜…è¯å· ç­›é€‰\n";
+        cout << "5ï¼šåˆ·æ–°\n";
+        cout << "è¯·è¾“å…¥é€‰æ‹©ï¼š";
 
         cin >> select;
     }
@@ -599,15 +598,15 @@ void sortuser() {
     {
         int select, i, j;
         int n = stlist.size();
-        
-        cout << "1£º°´ ÓÃ»§Ãû ÅÅĞò\n";
-        cout << "2£º°´ ÃÜÂë ÅÅĞò\n";
-        cout << "3£º°´ ĞÕÃû ÅÅĞò\n";
-        cout << "4£º°´ ĞÔ±ğ ÅÅĞò\n";
-        cout << "5£º°´ ÄêÁä ÅÅĞò\n";
-        cout << "6£º°´ ½èÔÄÖ¤ºÅ ÅÅĞò\n";
-        cout << "0£ºÍË³ö\n";
-        cout << "ÇëÊäÈëÑ¡Ôñ£º";
+
+        cout << "1ï¼šæŒ‰ ç”¨æˆ·å æ’åº\n";
+        cout << "2ï¼šæŒ‰ å¯†ç  æ’åº\n";
+        cout << "3ï¼šæŒ‰ å§“å æ’åº\n";
+        cout << "4ï¼šæŒ‰ æ€§åˆ« æ’åº\n";
+        cout << "5ï¼šæŒ‰ å¹´é¾„ æ’åº\n";
+        cout << "6ï¼šæŒ‰ å€Ÿé˜…è¯å· æ’åº\n";
+        cout << "0ï¼šé€€å‡º\n";
+        cout << "è¯·è¾“å…¥é€‰æ‹©ï¼š";
         cin >> select;
         if (select == 0)
         {
@@ -630,7 +629,7 @@ void sortuser() {
                     || select == 6 && strcmp(stlist[j].numb, stlist[i].numb) > 0
 
                     ) {
-                   
+
                 }
                 else  swap(stlist[i], stlist[j]);
 
@@ -639,7 +638,7 @@ void sortuser() {
 
         }
         int count = 0;
-        printf("\n%-5s%-15s%-15s%-15s%-8s%-10s%-18s\n\n", "ĞòºÅ", "ÓÃ»§Ãû", "ÃÜÂë", "ĞÕÃû", "ĞÔ±ğ", "ÄêÁä", "µØÖ·", "½èÔÄÖ¤ºÅ");
+        printf("\n%-5s%-15s%-15s%-15s%-8s%-10s%-18s\n\n", "åºå·", "ç”¨æˆ·å", "å¯†ç ", "å§“å", "æ€§åˆ«", "å¹´é¾„", "åœ°å€", "å€Ÿé˜…è¯å·");
 
         for (int i = 0; i < stlist.size(); i++)
         {
@@ -650,23 +649,23 @@ void sortuser() {
             );
             count++;
         }
-        cout << "      ¹²" << count << "Ìõ½á¹û\n";
+        cout << "      å…±" << count << "æ¡ç»“æœ\n";
     }
 }
 void modifyuser() {
     showst();
-    cout << "ÊäÈë¶ÔÓ¦ĞòºÅĞŞ¸Ä´ËÓÃ»§" << endl;
+    cout << "è¾“å…¥å¯¹åº”åºå·ä¿®æ”¹æ­¤ç”¨æˆ·" << endl;
     int i;
     int flag = 1;
     cin >> i;
     i--;
     char a[15];
-    cout << "ÇëÊäÈëÓÃ»§Ãû £º";
+    cout << "è¯·è¾“å…¥ç”¨æˆ·å ï¼š";
     cin >> a;
     for (auto b : stlist) {
 
         if (!strcmp(a, b.username)) {
-            
+
             flag = 0;
             break;
         }
@@ -674,69 +673,69 @@ void modifyuser() {
     if (flag)
     {
         strcpy(stlist[i].username, a);
-        cout << "ÇëÊäÈëÃÜÂë £º";
+        cout << "è¯·è¾“å…¥å¯†ç  ï¼š";
         cin >> stlist[i].password;
-        cout << "ÇëÊäÈëĞÕÃû £º";
+        cout << "è¯·è¾“å…¥å§“å ï¼š";
         cin >> stlist[i].name;
 
 
-        cout << "ÇëÊäÈëĞÔ±ğ £º";
+        cout << "è¯·è¾“å…¥æ€§åˆ« ï¼š";
         cin >> stlist[i].gender;
-        cout << "ÇëÊäÈëÄêÁä £º";
+        cout << "è¯·è¾“å…¥å¹´é¾„ ï¼š";
         cin >> stlist[i].age;
 
-        cout << "ÇëÊäÈë½èÔÄÖ¤ºÅ £º";
+        cout << "è¯·è¾“å…¥å€Ÿé˜…è¯å· ï¼š";
         cin >> stlist[i].numb;
         writest();
-        cout << "                       ĞŞ¸Ä³É¹¦"<<endl;
+        cout << "                       ä¿®æ”¹æˆåŠŸ" << endl;
     }
-    else cout << "         ĞŞ¸ÄÊ§°Ü£¬ÓÃ»§ÃûÖØ¸´ " << endl;
+    else cout << "         ä¿®æ”¹å¤±è´¥ï¼Œç”¨æˆ·åé‡å¤ " << endl;
     whh();
-    return ;
+    return;
 }
 void addbook() {
-   
-   
-        bool flag = 0;
-        while (flag == 0) {
-            flag = 1;
-            book a;
-            cout << "\nÇëÊäÈëÍ¼ÊéÃû £º";
-            cin >> a.name;
-            for(auto i:booklist)
+
+
+    bool flag = 0;
+    while (flag == 0) {
+        flag = 1;
+        book a;
+        cout << "\nè¯·è¾“å…¥å›¾ä¹¦å ï¼š";
+        cin >> a.name;
+        for (auto i : booklist)
             if (!strcmp(a.name, i.name)) {
                 flag = 0;
             }
+        if (flag == 0) {
+            cout << "æ·»åŠ å¤±è´¥ï¼Œå›¾ä¹¦åå·²å­˜åœ¨" << endl;
+            whh();
+            continue;
+        }
+        else {
+            cout << "è¯·è¾“å…¥ISBN ï¼š";
+
+            cin >> a.ibsn;
+            for (auto i : booklist)
+                if (!strcmp(a.ibsn, i.ibsn)) {
+                    flag = 0;
+                }
             if (flag == 0) {
-                cout << "Ìí¼ÓÊ§°Ü£¬Í¼ÊéÃûÒÑ´æÔÚ" << endl;
+                cout << "æ·»åŠ å¤±è´¥ï¼ŒIBSNå·å·²å­˜åœ¨" << endl;
                 whh();
                 continue;
             }
-            else {
-                cout << "ÇëÊäÈëISBN £º";
-               
-                cin >> a.ibsn;
-                for (auto i : booklist)
-                    if (!strcmp(a.ibsn, i.ibsn)) {
-                        flag = 0;
-                    }
-                if (flag == 0) {
-                    cout << "Ìí¼ÓÊ§°Ü£¬IBSNºÅÒÑ´æÔÚ" << endl;
-                    whh();
-                    continue;
-                }
-                		cout << "ÇëÊäÈë×÷Õß £º";
-                        cin >> a.author;
-                		cout << "ÇëÊäÈë³ö°æÉç £º";
-                        cin >> a.publish;
-                		cout << "ÇëÊäÈë¼Û¸ñ £º";
-                        cin >> a.price;
-                        booklist.push_back(a);
-                        writebook();
-            }
+            cout << "è¯·è¾“å…¥ä½œè€… ï¼š";
+            cin >> a.author;
+            cout << "è¯·è¾“å…¥å‡ºç‰ˆç¤¾ ï¼š";
+            cin >> a.publish;
+            cout << "è¯·è¾“å…¥ä»·æ ¼ ï¼š";
+            cin >> a.price;
+            booklist.push_back(a);
+            writebook();
         }
-        return;
-   
+    }
+    return;
+
 }
 void addrecord() {
 
@@ -746,7 +745,7 @@ void addrecord() {
     while (flag == 0) {
         flag = 0;
         record a;
-        cout << "ÇëÊäÈëÓÃ»§ £º";
+        cout << "è¯·è¾“å…¥ç”¨æˆ· ï¼š";
         cin >> a.user;
         for (auto i : stlist)
             if (!strcmp(a.user, i.username)) {
@@ -754,55 +753,55 @@ void addrecord() {
                 break;
             }
         if (flag == 0) {
-            cout << "ÓÃ»§²»´æÔÚ²¢ÇÒ²»ÄÜÊ¹ÓÃ¹ÜÀíÔ±ÕËºÅ" << endl;
-            cout << "ÊäÈë0·µ»Ø¼ÌĞø";
-                ;
+            cout << "ç”¨æˆ·ä¸å­˜åœ¨å¹¶ä¸”ä¸èƒ½ä½¿ç”¨ç®¡ç†å‘˜è´¦å·" << endl;
+            cout << "è¾“å…¥0è¿”å›ç»§ç»­";
+            ;
             int l;
             cin >> l;
             if (!l)
                 return;
-           
+
             continue;
         }
         else {
-            cout << "ÇëÊäÈëÍ¼Êé £º";
+            cout << "è¯·è¾“å…¥å›¾ä¹¦ ï¼š";
             flag = 0;
             cin >> a.book;
-            if(!booklist.empty())
-            for (auto i=booklist.begin();i<booklist.end();i++)
-                if (!strcmp(a.book, (*i).name)) {
-                    flag = 1;
-                    if ((*i).status == 1)
-                    {
-                        cout << "Í¼ÊéÒÑ½è³ö" << endl;
-                        cout << "ÊäÈë0·µ»Ø¼ÌĞø";
+            if (!booklist.empty())
+                for (auto i = booklist.begin(); i < booklist.end(); i++)
+                    if (!strcmp(a.book, (*i).name)) {
+                        flag = 1;
+                        if ((*i).status == 1)
+                        {
+                            cout << "å›¾ä¹¦å·²å€Ÿå‡º" << endl;
+                            cout << "è¾“å…¥0è¿”å›ç»§ç»­";
                             ;
-                        int l;
-                        cin >> l;
-                        if (!l)
-                            return;
-                        flag = -1;
+                            int l;
+                            cin >> l;
+                            if (!l)
+                                return;
+                            flag = -1;
+                        }
+                        (*i).status = 1;//å€Ÿé˜…çŠ¶æ€
                     }
-                    (*i).status = 1;//½èÔÄ×´Ì¬
-                }
             if (flag == -1) {
                 continue;
             }
             if (flag == 0) {
-                cout << "Í¼Êé²»´æÔÚ" << endl;
-                cout << "ÊäÈë0·µ»Ø¼ÌĞø";
-                    ;
+                cout << "å›¾ä¹¦ä¸å­˜åœ¨" << endl;
+                cout << "è¾“å…¥0è¿”å›ç»§ç»­";
+                ;
                 int l;
                 cin >> l;
                 if (!l)
                     return;
                 continue;
             }
-            		cout << "ÇëÊäÈë½èÊéÊ±¼ä £º";
-                    cin >> a.time1;
-  		cout << "ÇëÊäÈë»¹ÊéÊ±¼ä £º";
-        cin >> a.time2;
-        relist.push_back(a);
+            cout << "è¯·è¾“å…¥å€Ÿä¹¦æ—¶é—´ ï¼š";
+            cin >> a.time1;
+            cout << "è¯·è¾“å…¥è¿˜ä¹¦æ—¶é—´ ï¼š";
+            cin >> a.time2;
+            relist.push_back(a);
             writerecord();
         }
     }
@@ -810,42 +809,42 @@ void addrecord() {
 
 }
 void showbook() {
-    printf("\n%-5s%-15s%-18s%-14s%-15s%-12s\n\n", "ĞòºÅ", "Í¼ÊéÃû", "ISBN", "×÷Õß", "³ö°æÉç", "¼Û¸ñ");
-    		
-    			int count = 0, i;
-    			double priceSum = 0;
-    			for (i = 0; i < booklist.size(); i++)
-    			{
-   
-    					printf("%-5d%-15s%-18s%-14s%-15s%-12lf \n\n", i+1
-    						, booklist[i].name
-    						
-    						, booklist[i].ibsn
-    						, booklist[i].author
-    						, booklist[i].publish
-    						, booklist[i].price
-    					);
-    count++;
-}
-cout << "¹²" << count << "Ìõ½á¹û\n";
+    printf("\n%-5s%-15s%-18s%-14s%-15s%-12s\n\n", "åºå·", "å›¾ä¹¦å", "ISBN", "ä½œè€…", "å‡ºç‰ˆç¤¾", "ä»·æ ¼");
+
+    int count = 0, i;
+    double priceSum = 0;
+    for (i = 0; i < booklist.size(); i++)
+    {
+
+        printf("%-5d%-15s%-18s%-14s%-15s%-12lf \n\n", i + 1
+            , booklist[i].name
+
+            , booklist[i].ibsn
+            , booklist[i].author
+            , booklist[i].publish
+            , booklist[i].price
+        );
+        count++;
+    }
+    cout << "å…±" << count << "æ¡ç»“æœ\n";
 }
 void showrecord() {
-    		printf("\n%-5s%-15s%-15s%-10s%\n\n", "ĞòºÅ", "ÓÃ»§", "Í¼Êé", "½èÊéÊ±¼ä", "»¹ÊéÊ±¼ä");
-		
-			int count = 0, i;
-		for(int i=0;i<relist.size();i++)
-        {
-            printf("%-5d%-15s%-15s%-10d% \n\n", i + 1
-                , relist[i].user
-                , relist[i].book
-                , relist[i].time1
-                , relist[i].time2
+    printf("\n%-5s%-15s%-15s%-10s%\n\n", "åºå·", "ç”¨æˆ·", "å›¾ä¹¦", "å€Ÿä¹¦æ—¶é—´", "è¿˜ä¹¦æ—¶é—´");
 
-            );
-            count++;
-        }
-        cout << "¹²" << count << "Ìõ½á¹û\n";
-					
+    int count = 0, i;
+    for (int i = 0; i < relist.size(); i++)
+    {
+        printf("%-5d%-15s%-15s%-10d% \n\n", i + 1
+            , relist[i].user
+            , relist[i].book
+            , relist[i].time1
+            , relist[i].time2
+
+        );
+        count++;
+    }
+    cout << "å…±" << count << "æ¡ç»“æœ\n";
+
 }
 void deletebook() {
     while (1)
@@ -853,21 +852,21 @@ void deletebook() {
         showbook();
         int n;
 
-        cout << "ÊäÈëĞòºÅ,É¾³ıÄãÏëÉ¾³ıµÄÊé¼®»òÕßÊäÈë0·µ»Ø" << endl;
+        cout << "è¾“å…¥åºå·,åˆ é™¤ä½ æƒ³åˆ é™¤çš„ä¹¦ç±æˆ–è€…è¾“å…¥0è¿”å›" << endl;
         cin >> n;
         if (!n)
             return;
         n--;
         if (n >= 0 && n < booklist.size()) {
-            
-                booklist.erase(booklist.begin() + n);
-           
-            cout << "É¾³ı³É¹¦" << endl;
+
+            booklist.erase(booklist.begin() + n);
+
+            cout << "åˆ é™¤æˆåŠŸ" << endl;
             writebook();
-           
+
         }
         else {
-            cout << "ÄúÊäÈëµÄĞòºÅ²»ÔÚ´ËÁĞ" << endl;
+            cout << "æ‚¨è¾“å…¥çš„åºå·ä¸åœ¨æ­¤åˆ—" << endl;
             whh();
         }
 
@@ -881,30 +880,30 @@ void deleterecord() {
         showrecord();
         int n;
 
-        cout << "ÊäÈëĞòºÅ,É¾³ıÄãÏëÉ¾³ıµÄ¼ÇÂ¼»òÕßÊäÈë0·µ»Ø" << endl;
+        cout << "è¾“å…¥åºå·,åˆ é™¤ä½ æƒ³åˆ é™¤çš„è®°å½•æˆ–è€…è¾“å…¥0è¿”å›" << endl;
         cin >> n;
         if (!n)
             return;
         n--;
         if (n >= 0 && n < relist.size()) {
-            
-            for (int i = 0; i < booklist.size(); i++) 
+
+            for (int i = 0; i < booklist.size(); i++)
             {
                 if (!strcmp(relist[n].book, booklist[i].name)) {
-                    booklist[i].status=0;
+                    booklist[i].status = 0;
                     break;
                 }
-                
+
             }
             relist.erase(relist.begin() + n);
 
-            cout << "É¾³ı³É¹¦" << endl;
+            cout << "åˆ é™¤æˆåŠŸ" << endl;
 
             writerecord();
-           
+
         }
         else {
-            cout << "ÄúÊäÈëµÄĞòºÅ²»ÔÚ´ËÁĞ" << endl;
+            cout << "æ‚¨è¾“å…¥çš„åºå·ä¸åœ¨æ­¤åˆ—" << endl;
             whh();
         }
 
@@ -914,18 +913,18 @@ void deleterecord() {
 }
 void modifyrecord() {
     showrecord();
-    cout << "ÊäÈë¶ÔÓ¦ĞòºÅĞŞ¸Ä´Ë¼ÇÂ¼" << endl;
+    cout << "è¾“å…¥å¯¹åº”åºå·ä¿®æ”¹æ­¤è®°å½•" << endl;
     int i;
     int flag = 0;
     cin >> i;
     i--;
-    
+
     record a;
-    
-    while (flag <= 0 ) {
+
+    while (flag <= 0) {
         flag = 0;
-       
-        cout << "ÇëÊäÈëÓÃ»§ £º";
+
+        cout << "è¯·è¾“å…¥ç”¨æˆ· ï¼š";
         cin >> a.user;
         for (auto i : stlist)
             if (!strcmp(a.user, i.username)) {
@@ -933,9 +932,9 @@ void modifyrecord() {
                 break;
             }
         if (flag == 0) {
-            cout << "ÓÃ»§²»´æÔÚ ²»ÄÜÊ¹ÓÃ¹ÜÀíÔ±ÕËºÅ" << endl;
-            cout << "ÊäÈë0·µ»Ø¼ÌĞø";
-                ;
+            cout << "ç”¨æˆ·ä¸å­˜åœ¨ ä¸èƒ½ä½¿ç”¨ç®¡ç†å‘˜è´¦å·" << endl;
+            cout << "è¾“å…¥0è¿”å›ç»§ç»­";
+            ;
             int l;
             cin >> l;
             if (!l)
@@ -943,7 +942,7 @@ void modifyrecord() {
             continue;
         }
         else {
-            cout << "ÇëÊäÈëÍ¼Êé £º";
+            cout << "è¯·è¾“å…¥å›¾ä¹¦ ï¼š";
 
             cin >> a.book;
             for (auto i = booklist.begin(); i < booklist.end(); i++)
@@ -951,9 +950,9 @@ void modifyrecord() {
                     flag = 1;
                     if ((*i).status == 1)
                     {
-                        cout << "Í¼ÊéÒÑ½è³ö" << endl;
-                        cout << "ÊäÈë0·µ»Ø¼ÌĞø";
-                            ;
+                        cout << "å›¾ä¹¦å·²å€Ÿå‡º" << endl;
+                        cout << "è¾“å…¥0è¿”å›ç»§ç»­";
+                        ;
                         int l;
                         cin >> l;
                         if (!l)
@@ -961,25 +960,25 @@ void modifyrecord() {
                         continue;
                         flag = -1;
                     }
-                    (*i).status = 1;//½èÔÄ×´Ì¬
+                    (*i).status = 1;//å€Ÿé˜…çŠ¶æ€
                 }
             if (flag == -1) {
                 continue;
             }
             if (flag == 0) {
-                cout << "Í¼Êé²»´æÔÚ" << endl;
-                
-                cout << "ÊäÈë0·µ»Ø¼ÌĞø";
-                    ;
+                cout << "å›¾ä¹¦ä¸å­˜åœ¨" << endl;
+
+                cout << "è¾“å…¥0è¿”å›ç»§ç»­";
+                ;
                 int l;
                 cin >> l;
                 if (!l)
                     return;
                 continue;
             }
-            cout << "ÇëÊäÈë½èÊéÊ±¼ä £º";
+            cout << "è¯·è¾“å…¥å€Ÿä¹¦æ—¶é—´ ï¼š";
             cin >> a.time1;
-            cout << "ÇëÊäÈë»¹ÊéÊ±¼ä £º";
+            cout << "è¯·è¾“å…¥è¿˜ä¹¦æ—¶é—´ ï¼š";
             cin >> a.time2;
             for (int k = 0; k < booklist.size(); k++)
             {
@@ -998,9 +997,9 @@ void modifyrecord() {
 }
 void modifybook() {
     showbook();
-    cout << "ÊäÈë¶ÔÓ¦ĞòºÅĞŞ¸Ä´Ë¼ÇÂ¼" << endl;
+    cout << "è¾“å…¥å¯¹åº”åºå·ä¿®æ”¹æ­¤è®°å½•" << endl;
     int i;
- 
+
     cin >> i;
     i--;
     record a;
@@ -1008,19 +1007,19 @@ void modifybook() {
     while (flag == 0) {
         flag = 1;
         book a;
-        cout << "\nÇëÊäÈëÍ¼ÊéÃû £º";
+        cout << "\nè¯·è¾“å…¥å›¾ä¹¦å ï¼š";
         cin >> a.name;
         for (auto i : booklist)
             if (!strcmp(a.name, i.name)) {
                 flag = 0;
             }
         if (flag == 0) {
-            cout << "Ìí¼ÓÊ§°Ü£¬Í¼ÊéÃûÒÑ´æÔÚ" << endl;
+            cout << "æ·»åŠ å¤±è´¥ï¼Œå›¾ä¹¦åå·²å­˜åœ¨" << endl;
             whh();
             continue;
         }
         else {
-            cout << "ÇëÊäÈëISBN £º";
+            cout << "è¯·è¾“å…¥ISBN ï¼š";
 
             cin >> a.ibsn;
             for (auto i : booklist)
@@ -1028,15 +1027,15 @@ void modifybook() {
                     flag = 0;
                 }
             if (flag == 0) {
-                cout << "Ìí¼ÓÊ§°Ü£¬IBSNºÅÒÑ´æÔÚ" << endl;
+                cout << "æ·»åŠ å¤±è´¥ï¼ŒIBSNå·å·²å­˜åœ¨" << endl;
                 whh();
                 continue;
             }
-            cout << "ÇëÊäÈë×÷Õß £º";
+            cout << "è¯·è¾“å…¥ä½œè€… ï¼š";
             cin >> a.author;
-            cout << "ÇëÊäÈë³ö°æÉç £º";
+            cout << "è¯·è¾“å…¥å‡ºç‰ˆç¤¾ ï¼š";
             cin >> a.publish;
-            cout << "ÇëÊäÈë¼Û¸ñ £º";
+            cout << "è¯·è¾“å…¥ä»·æ ¼ ï¼š";
             cin >> a.price;
             booklist[i] = a;
             writebook();
@@ -1054,25 +1053,25 @@ void findbook() {
 
         if (select == 0)
         {
-           
+
             return;
         }
         if (select > -1 && select <= 4) {
             if (select == 1 || select == 2 || select == 3 || select == 4) {
-                cout << "ÇëÊäÈëÉ¸Ñ¡Ìõ¼ş£º";
+                cout << "è¯·è¾“å…¥ç­›é€‰æ¡ä»¶ï¼š";
                 cin >> conCharArr;
             }
         }
-       
-        printf("\n%-5s%-15s%-18s%-14s%-15s%-12s\n\n", "ĞòºÅ", "Í¼ÊéÃû", "ISBN", "×÷Õß", "³ö°æÉç", "¼Û¸ñ");
+
+        printf("\n%-5s%-15s%-18s%-14s%-15s%-12s\n\n", "åºå·", "å›¾ä¹¦å", "ISBN", "ä½œè€…", "å‡ºç‰ˆç¤¾", "ä»·æ ¼");
         for (int i = 0; i < booklist.size(); i++)
             if (select == -1
-                					|| select == 1 && strstr(booklist[i].name, conCharArr) //¸ù¾İÍ¼ÊéÃû,Ä£ºı²éÑ¯
-                					
-                					|| select == 2 && strstr(booklist[i].ibsn, conCharArr) //¸ù¾İISBN,Ä£ºı²éÑ¯
-                					|| select == 3 && strstr(booklist[i].author, conCharArr) //¸ù¾İ×÷Õß,Ä£ºı²éÑ¯
-                					) {
-              
+                || select == 1 && strstr(booklist[i].name, conCharArr) //æ ¹æ®å›¾ä¹¦å,æ¨¡ç³ŠæŸ¥è¯¢
+
+                || select == 2 && strstr(booklist[i].ibsn, conCharArr) //æ ¹æ®ISBN,æ¨¡ç³ŠæŸ¥è¯¢
+                || select == 3 && strstr(booklist[i].author, conCharArr) //æ ¹æ®ä½œè€…,æ¨¡ç³ŠæŸ¥è¯¢
+                ) {
+
 
                 printf("%-5d%-15s%-18s%-14s%-15s%-12lf \n\n", i + 1
                     , booklist[i].name
@@ -1084,27 +1083,27 @@ void findbook() {
                 );
                 count++;
             }
-        
 
-           
+
+
             else booklist.erase(booklist.begin() + (i--));
-        cout << "¹²" << count << "Ìõ½á¹û\n";
-
-
-       
+        cout << "å…±" << count << "æ¡ç»“æœ\n";
 
 
 
 
 
-        cout << "¡¾É¸Ñ¡Æ÷£ºÄã¿ÉÒÔÔÚÒÔÉÏ½á¹ûµÄ»ù´¡ÉÏ£¬½øĞĞÒÔÏÂÌõ¼şÉ¸Ñ¡¡¿\n";
-        
-        cout << "1£º°´ Í¼ÊéÃû É¸Ñ¡\n";
-        cout << "2£º°´ ISBN É¸Ñ¡\n";
-        cout << "3£º°´ ×÷Õß É¸Ñ¡\n";
-        cout << "4£ºË¢ĞÂ\n";
-        cout << "0£ºÍË³ö\n";
-        cout << "ÇëÊäÈëÑ¡Ôñ£º";
+
+
+
+        cout << "ã€ç­›é€‰å™¨ï¼šä½ å¯ä»¥åœ¨ä»¥ä¸Šç»“æœçš„åŸºç¡€ä¸Šï¼Œè¿›è¡Œä»¥ä¸‹æ¡ä»¶ç­›é€‰ã€‘\n";
+
+        cout << "1ï¼šæŒ‰ å›¾ä¹¦å ç­›é€‰\n";
+        cout << "2ï¼šæŒ‰ ISBN ç­›é€‰\n";
+        cout << "3ï¼šæŒ‰ ä½œè€… ç­›é€‰\n";
+        cout << "4ï¼šåˆ·æ–°\n";
+        cout << "0ï¼šé€€å‡º\n";
+        cout << "è¯·è¾“å…¥é€‰æ‹©ï¼š";
 
         cin >> select;
         if (select == 4)
@@ -1125,43 +1124,43 @@ void findrecord() {
 
         char conCharArr[40];
 
-        
+
         if (select == 0)
         {
-           
+
             return;
         }
         if (select > -1 && select <= 4) {
             if (select == 1 || select == 2 || select == 3 || select == 4) {
-                cout << "ÇëÊäÈëÉ¸Ñ¡Ìõ¼ş£º";
+                cout << "è¯·è¾“å…¥ç­›é€‰æ¡ä»¶ï¼š";
                 cin >> conCharArr;
             }
         }
-       
-        printf("\n%-5s%-15s%-15s%-10s%\n\n", "ĞòºÅ", "ÓÃ»§", "Í¼Êé", "½èÊéÊ±¼ä", "»¹ÊéÊ±¼ä");
+
+        printf("\n%-5s%-15s%-15s%-10s%\n\n", "åºå·", "ç”¨æˆ·", "å›¾ä¹¦", "å€Ÿä¹¦æ—¶é—´", "è¿˜ä¹¦æ—¶é—´");
         for (int i = 0; i < relist.size(); i++)
             if (select == -1
-                || select == 1 && strstr(relist[i].user, conCharArr) //¸ù¾İÓÃ»§,Ä£ºı²éÑ¯
+                || select == 1 && strstr(relist[i].user, conCharArr) //æ ¹æ®ç”¨æˆ·,æ¨¡ç³ŠæŸ¥è¯¢
 
-                || select == 2 && strstr(relist[i].book, conCharArr) //¸ù¾İÍ¼Êé,Ä£ºı²éÑ¯
-                
+                || select == 2 && strstr(relist[i].book, conCharArr) //æ ¹æ®å›¾ä¹¦,æ¨¡ç³ŠæŸ¥è¯¢
+
                 ) {
                 printf("%-5d%-15s%-15s%-10d% \n\n", i + 1
-                            , relist[i].user
-                            , relist[i].book
-                            , relist[i].time1
-                            , relist[i].time2
-                    
-                        );
+                    , relist[i].user
+                    , relist[i].book
+                    , relist[i].time1
+                    , relist[i].time2
 
-   
+                );
+
+
                 count++;
             }
 
 
 
             else relist.erase(relist.begin() + (i--));
-        cout << "¹²" << count << "Ìõ½á¹û\n";
+        cout << "å…±" << count << "æ¡ç»“æœ\n";
 
 
 
@@ -1170,14 +1169,14 @@ void findrecord() {
 
 
 
-        cout << "¡¾É¸Ñ¡Æ÷£ºÄã¿ÉÒÔÔÚÒÔÉÏ½á¹ûµÄ»ù´¡ÉÏ£¬½øĞĞÒÔÏÂÌõ¼şÉ¸Ñ¡¡¿\n";
+        cout << "ã€ç­›é€‰å™¨ï¼šä½ å¯ä»¥åœ¨ä»¥ä¸Šç»“æœçš„åŸºç¡€ä¸Šï¼Œè¿›è¡Œä»¥ä¸‹æ¡ä»¶ç­›é€‰ã€‘\n";
 
-        cout << "1£º°´ ÓÃ»§ É¸Ñ¡\n";
-        cout << "2£º°´ Í¼Êé É¸Ñ¡\n";
-        
-        cout << "3£ºË¢ĞÂ\n";
-        cout << "0£ºÍË³ö\n";
-        cout << "ÇëÊäÈëÑ¡Ôñ£º";
+        cout << "1ï¼šæŒ‰ ç”¨æˆ· ç­›é€‰\n";
+        cout << "2ï¼šæŒ‰ å›¾ä¹¦ ç­›é€‰\n";
+
+        cout << "3ï¼šåˆ·æ–°\n";
+        cout << "0ï¼šé€€å‡º\n";
+        cout << "è¯·è¾“å…¥é€‰æ‹©ï¼š";
 
         cin >> select;
         if (select == 3)
@@ -1199,13 +1198,13 @@ void sortbook() {
         int select, i, j;
         int n = booklist.size();
 
-    cout << "1£º°´ Í¼ÊéÃû ÅÅĞò\n";
-	cout << "2£º°´ ISBN ÅÅĞò\n";
-	cout << "3£º°´ ×÷Õß ÅÅĞò\n";
-	cout << "4£º°´ ³ö°æÉç ÅÅĞò\n";
-	cout << "5£º°´ ¼Û¸ñ ÅÅĞò\n";
-        cout << "0£ºÍË³ö\n";
-        cout << "ÇëÊäÈëÑ¡Ôñ£º";
+        cout << "1ï¼šæŒ‰ å›¾ä¹¦å æ’åº\n";
+        cout << "2ï¼šæŒ‰ ISBN æ’åº\n";
+        cout << "3ï¼šæŒ‰ ä½œè€… æ’åº\n";
+        cout << "4ï¼šæŒ‰ å‡ºç‰ˆç¤¾ æ’åº\n";
+        cout << "5ï¼šæŒ‰ ä»·æ ¼ æ’åº\n";
+        cout << "0ï¼šé€€å‡º\n";
+        cout << "è¯·è¾“å…¥é€‰æ‹©ï¼š";
         cin >> select;
         if (select == 0)
         {
@@ -1215,18 +1214,18 @@ void sortbook() {
 
         for (i = 0; i < n - 1; i++)
         {
-            
+
 
             for (j = i + 1; j < n; j++)
             {
                 if (0
-                    				|| select == 1 && strcmp(booklist[j].name, booklist[i].name) > 0
-                    				
-                    				|| select == 2 && strcmp(booklist[j].ibsn, booklist[i].ibsn) > 0
-                    				|| select == 3 && strcmp(booklist[j].author, booklist[i].author) > 0
-                    				|| select == 4 && strcmp(booklist[j].publish, booklist[i].publish) > 0
-                    				|| select == 5 && booklist[j].price - booklist[i].price > 0
-                    				) {
+                    || select == 1 && strcmp(booklist[j].name, booklist[i].name) > 0
+
+                    || select == 2 && strcmp(booklist[j].ibsn, booklist[i].ibsn) > 0
+                    || select == 3 && strcmp(booklist[j].author, booklist[i].author) > 0
+                    || select == 4 && strcmp(booklist[j].publish, booklist[i].publish) > 0
+                    || select == 5 && booklist[j].price - booklist[i].price > 0
+                    ) {
 
                 }
                 else  swap(booklist[i], booklist[j]);
@@ -1245,14 +1244,14 @@ void sortrecord() {
         int select, i, j;
         int n = relist.size();
 
-        	cout << "1£º°´ ÓÃ»§ ÅÅĞò\n";
- 	cout << "2£º°´ Í¼Êé ÅÅĞò\n";
- 	cout << "3£º°´ ½èÊéÊ±¼ä ÅÅĞò\n";
- 	cout << "4£º°´ »¹ÊéÊ±¼ä ÅÅĞò\n";
-   	
+        cout << "1ï¼šæŒ‰ ç”¨æˆ· æ’åº\n";
+        cout << "2ï¼šæŒ‰ å›¾ä¹¦ æ’åº\n";
+        cout << "3ï¼šæŒ‰ å€Ÿä¹¦æ—¶é—´ æ’åº\n";
+        cout << "4ï¼šæŒ‰ è¿˜ä¹¦æ—¶é—´ æ’åº\n";
 
-        cout << "0£ºÍË³ö\n";
-        cout << "ÇëÊäÈëÑ¡Ôñ£º";
+
+        cout << "0ï¼šé€€å‡º\n";
+        cout << "è¯·è¾“å…¥é€‰æ‹©ï¼š";
         cin >> select;
         if (select == 0)
         {
@@ -1267,12 +1266,12 @@ void sortrecord() {
             for (j = i + 1; j < n; j++)
             {
                 if (0
-                    				|| select == 1 && strcmp(relist[j].user, relist[i].user) > 0
-                    				|| select == 2 && strcmp(relist[j].book, relist[i].book) > 0
-                    				|| select == 3 && relist[j].time1 - relist[i].time1 > 0
-                    				|| select == 4 && relist[j].time2 - relist[i].time2 > 0
-                    			
-                    				) {
+                    || select == 1 && strcmp(relist[j].user, relist[i].user) > 0
+                    || select == 2 && strcmp(relist[j].book, relist[i].book) > 0
+                    || select == 3 && relist[j].time1 - relist[i].time1 > 0
+                    || select == 4 && relist[j].time2 - relist[i].time2 > 0
+
+                    ) {
 
                 }
                 else  swap(relist[i], relist[j]);
