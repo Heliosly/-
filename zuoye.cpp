@@ -112,7 +112,7 @@ int main() {
             case 13:modifyrecord(); break;
             case 14:findrecord(); break;
             case 15:sortrecord(); break;
-            case 0: return; break;
+            case 0: return 0; break;
             }
         }
         else {
